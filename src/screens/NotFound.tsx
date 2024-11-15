@@ -1,5 +1,4 @@
 import { ContentContainer } from '../components/ContentContainer';
-import { FeaturedCharacters } from '../components/FeaturedCharacters';
 
 export const NotFound = () => {
 	return (

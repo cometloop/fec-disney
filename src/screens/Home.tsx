@@ -6,7 +6,7 @@ import { FeaturedCharacters } from '../components/FeaturedCharacters';
 import { useSearch } from '../globalState/searchStore';
 
 export const Home = () => {
-	const { data: defaultCharacters, isLoading } = useQuery({
+	const { data: defaultCharacters } = useQuery({
 		queryKey: ['default'],
 		queryFn: () => api.getCharacters(8),
 	});

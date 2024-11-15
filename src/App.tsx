@@ -21,10 +21,6 @@ const App = () => {
 					<Routes>
 						<Route path={routes.home} element={<Home />} />
 						<Route
-							path={routes.searchResults}
-							element={<div>Search results</div>}
-						/>
-						<Route
 							path={routes.characterDetails.path}
 							element={<CharacterDetails />}
 						/>

@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { CharacterItem } from '../components/CharacterItem';
-import { ContentContainer } from '../components/ContentContainer';
 
 export const FeaturedCharacters = () => {
-	const { data, isLoading } = useQuery({
+	const { data } = useQuery({
 		queryKey: ['featured'],
 		queryFn: () => api.getCharacters(4),
 	});

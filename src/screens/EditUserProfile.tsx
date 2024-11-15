@@ -17,7 +17,7 @@ const inputStyles =
 const labelStyles = 'block text-sm/6 font-medium text-gray-900';
 
 export const EditUserProfile = () => {
-	const [cookies, setCookie, removeCookie] = useCookies(['user-profile']);
+	const [cookies, setCookie] = useCookies(['user-profile']);
 
 	const storedUserProfile = cookies['user-profile']
 		? cookies['user-profile']
@@ -25,12 +25,9 @@ export const EditUserProfile = () => {
 
 	const {
 		register,
-		trigger,
-		reset,
-		formState: { errors, isValid, isDirty },
+		formState: { errors },
 		handleSubmit,
 		setValue,
-		watch,
 	} = useForm<UserProfileType>({
 		mode: 'onChange',
 		reValidateMode: 'onChange',

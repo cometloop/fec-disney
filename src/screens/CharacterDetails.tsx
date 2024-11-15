@@ -9,7 +9,7 @@ export const CharacterDetails = () => {
 	const { id: idStr } = useParams();
 	const id = parseInt(idStr || '');
 
-	const { data, isLoading } = useQuery({
+	const { data } = useQuery({
 		queryKey: ['character', id],
 		queryFn: () => api.getCharacter(id),
 	});
@@ -20,8 +20,6 @@ export const CharacterDetails = () => {
 
 	const { imageUrl, sourceUrl, name, films, shortFilms, tvShows, updatedAt } =
 		data;
-
-	console.log({ data, isLoading });
 
 	return (
 		<>
