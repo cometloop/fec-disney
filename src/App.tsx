@@ -10,6 +10,7 @@ import { CharacterDetails } from './screens/CharacterDetails';
 import { EditUserProfile } from './screens/EditUserProfile';
 import { UserProfileScreen as UserProfile } from './screens/UserProfile';
 import { Toaster } from 'react-hot-toast';
+import { SearchResults } from './screens/SearchResults';
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => {
 					<Navbar />
 					<Routes>
 						<Route path={routes.home} element={<Home />} />
+						<Route path={routes.searchResults} element={<SearchResults />} />
 						<Route
 							path={routes.characterDetails.path}
 							element={<CharacterDetails />}

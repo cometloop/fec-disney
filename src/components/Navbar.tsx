@@ -1,6 +1,6 @@
 import { CiUser } from 'react-icons/ci';
 import { Logo } from './Logo';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../routes';
 
 import { useEffect, useState } from 'react';
@@ -13,9 +13,13 @@ export const Navbar = () => {
 	const [val, setVal] = useState('');
 
 	const { state, actions } = useSearch();
+	const navigate = useNavigate();
 
 	const updateQuery = (query: string) => {
 		actions.updateQuery(query);
+		if (query !== '') {
+			navigate(routes.searchResults);
+		}
 	};
 
 	const debouncedUpdateQuery = useDebounce(updateQuery, 500);
