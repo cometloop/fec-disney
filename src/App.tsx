@@ -9,6 +9,7 @@ import { Home } from './screens/Home';
 import { CharacterDetails } from './screens/CharacterDetails';
 import { EditUserProfile } from './screens/EditUserProfile';
 import { UserProfileScreen as UserProfile } from './screens/UserProfile';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => {
 					</Routes>
 					<Footer />
 				</BrowserRouter>
+				<Toaster />
 			</Layout>
 		</QueryClientProvider>
 	);

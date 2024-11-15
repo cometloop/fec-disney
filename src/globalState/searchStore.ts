@@ -5,12 +5,14 @@ import { CharactersResponse } from '../types';
 
 type State = {
 	query: string;
+	isLoading: boolean;
 	results?: CharactersResponse;
 };
 
 type Actions = {
 	updateQuery: (query: string) => void;
 	updateResults: (results: CharactersResponse) => void;
+	setIsLoading: (val: boolean) => void;
 	reset: () => void;
 };
 
@@ -21,15 +23,13 @@ type Store = {
 
 const DEFAULT_STATE: State = {
 	query: '',
+	isLoading: false,
 	results: undefined,
 };
 
 const useSearchStore = create<Store>()(
 	immer((set) => ({
-		state: {
-			query: '',
-			results: undefined,
-		},
+		state: { ...DEFAULT_STATE },
 		actions: {
 			updateQuery: (query) => {
 				set(({ state }) => {
@@ -42,6 +42,11 @@ const useSearchStore = create<Store>()(
 			updateResults: (results) => {
 				set(({ state }) => {
 					state.results = results;
+				});
+			},
+			setIsLoading: (val) => {
+				set(({ state }) => {
+					state.isLoading = val;
 				});
 			},
 			reset: () => {

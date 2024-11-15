@@ -4,18 +4,25 @@ import { useParams } from 'react-router';
 import { colors } from '../colors';
 import { DateTime } from 'luxon';
 import { FeaturedCharacters } from '../components/FeaturedCharacters';
+import { Loading } from '../components/Loading';
 
 export const CharacterDetails = () => {
 	const { id: idStr } = useParams();
 	const id = parseInt(idStr || '');
 
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['character', id],
 		queryFn: () => api.getCharacter(id),
 	});
 
-	if (!data) {
-		return null;
+	if (!data || isLoading) {
+		return (
+			<div className={`bg-[${colors.gray}] p-5 md:p-[80px]`}>
+				<div className='text-center'>
+					<Loading color='blue' />
+				</div>
+			</div>
+		);
 	}
 
 	const { imageUrl, sourceUrl, name, films, shortFilms, tvShows, updatedAt } =

@@ -20,7 +20,7 @@ export const Navbar = () => {
 
 	const debouncedUpdateQuery = useDebounce(updateQuery, 500);
 
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['search', state.query],
 		enabled: Boolean(state.query),
 		queryFn: () => api.search(state.query),
@@ -31,6 +31,10 @@ export const Navbar = () => {
 			actions.updateResults(data);
 		}
 	}, [actions, data]);
+
+	useEffect(() => {
+		actions.setIsLoading(isLoading);
+	}, [actions, data, isLoading]);
 
 	return (
 		<div className='flex items-center gap-5 md:gap-10 p-5 md:p-0'>
