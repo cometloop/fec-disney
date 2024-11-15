@@ -32,10 +32,6 @@ const App = () => {
 							path={routes.user.editProfile}
 							element={<EditUserProfile />}
 						/>
-						<Route
-							path={routes.user.editProfile}
-							element={<div>User edit profile</div>}
-						/>
 						<Route path='*' element={<NotFound />} />
 					</Routes>
 					<Footer />

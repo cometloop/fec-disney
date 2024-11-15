@@ -64,7 +64,7 @@ export const Navbar = () => {
 				<Link to={routes.user.profile}>
 					<button
 						type='button'
-						className='rounded-full bg-[#054553] text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 p-1 md:p-4'
+						className='rounded-full bg-[#054553] text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 p-1 md:p-4'
 					>
 						<CiUser aria-hidden='true' className=' size-5' />
 					</button>
