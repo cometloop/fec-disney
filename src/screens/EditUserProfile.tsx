@@ -99,7 +99,7 @@ export const EditUserProfile = () => {
 								id='dob'
 								{...register('dob')}
 								type='text'
-								className={`${inputStyles} w-[320px]`}
+								className={`${inputStyles} w-[170px]`}
 							/>
 							{errors.dob && <ErrorMessage>{errors.dob.message}</ErrorMessage>}
 						</div>

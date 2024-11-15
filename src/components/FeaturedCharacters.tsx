@@ -9,7 +9,7 @@ export const FeaturedCharacters = () => {
 	});
 
 	return (
-		<div className='bg-[#054553] p-[80px] pt-0'>
+		<div className='bg-[#054553]  p-5 md:p-[80px] pt-0'>
 			<h1 className='text-white text-[36px] text-center py-[30px]'>
 				Featured Characters!
 			</h1>

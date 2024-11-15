@@ -23,10 +23,10 @@ export const CharacterDetails = () => {
 
 	return (
 		<>
-			<div className={`bg-[${colors.gray}] p-[80px]`}>
+			<div className={`bg-[${colors.gray}] p-5 md:p-[80px]`}>
 				<div className='flex flex-row flex-wrap gap-8'>
 					<img
-						className='w-[439px] h-[529px] object-cover'
+						className='w-full md:w-[439px] md:h-[529px] object-cover'
 						style={{
 							boxShadow: '0px 4px 24px 0px #0545531F',
 							borderRadius: '16px',

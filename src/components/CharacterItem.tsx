@@ -19,9 +19,9 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 	}, [films]);
 
 	return (
-		<div className='flex flex-col w-[248px] h-[416px] text-center bg-white'>
+		<div className='flex flex-col w-full md:w-[248px] md:h-[416px] text-center bg-white'>
 			<img
-				className='w-[248px] h-[248px] object-cover'
+				className='w-full md:w-[248px] md:h-[248px] object-cover'
 				src={imageUrl}
 				alt={name}
 			/>

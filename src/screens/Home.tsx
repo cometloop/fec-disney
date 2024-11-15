@@ -20,11 +20,11 @@ export const Home = () => {
 		<>
 			<ContentContainer>
 				{hasSearchResults && (
-					<h1 className='text-[36px] text-center pb-20'>
+					<h1 className='text-[24px] md:text-[36px] text-center pb-5 md:pb-20'>
 						Search Results - {query}
 					</h1>
 				)}
-				<div className='flex flex-row flex-wrap gap-4'>
+				<div className='flex flex-col md:flex-row flex-wrap gap-4'>
 					{hasSearchResults &&
 						results?.data?.map((item) => {
 							return <CharacterItem key={item._id} character={item} />;

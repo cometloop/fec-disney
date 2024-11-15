@@ -13,5 +13,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
 	color = 'gray',
 	children,
 }) => {
-	return <div className={`bg-[${colors[color]}] p-[80px]`}>{children}</div>;
+	return (
+		<div className={`bg-[${colors[color]}] p-5 md:p-[80px]`}>{children}</div>
+	);
 };
