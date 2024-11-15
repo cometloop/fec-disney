@@ -15,4 +15,22 @@ export const api = {
 		);
 		return result.data.data;
 	},
+	search: async (query: string): Promise<CharactersResponse> => {
+		const result = await axios.get(`${API_BASE_URL}/character`, {
+			params: {
+				name: query,
+			},
+		});
+
+		// account for bad api design. ideally api always returns an array
+		// even if only 1 result is found
+		if (!Array.isArray(result.data.data)) {
+			return {
+				...result.data,
+				data: [result.data.data],
+			};
+		}
+
+		return result.data;
+	},
 };

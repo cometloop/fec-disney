@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { routes } from '../routes';
 import { Character } from '../types';
+import { useMemo } from 'react';
 
 type CharacterItemProps = {
 	character: Character;
@@ -8,6 +9,14 @@ type CharacterItemProps = {
 
 export const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 	const { imageUrl, _id, name, films } = character;
+
+	const filmStr = useMemo(() => {
+		let str = films.join(', ');
+		if (str.length > 100) {
+			str = `${str.slice(0, 70)}...`;
+		}
+		return str;
+	}, [films]);
 
 	return (
 		<div className='flex flex-col w-[248px] h-[416px] text-center bg-white'>
@@ -24,7 +33,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 					Feature Films
 					<br />
 					<span className='text-[15px] font-normal text-ellipsis overflow-hidden w-full leading-[16px]'>
-						{films.join(', ')}
+						{filmStr}
 					</span>
 				</h2>
 

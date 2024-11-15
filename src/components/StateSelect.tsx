@@ -51,9 +51,22 @@ const stateAbbreviations = [
 	'WY',
 ];
 
-export const StateSelect = () => {
+type StateSelectProps = {
+	onChange: (state: string) => void;
+	defaultValue?: string;
+};
+
+export const StateSelect: React.FC<StateSelectProps> = ({
+	defaultValue,
+	onChange,
+}) => {
 	return (
-		<select className='block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 p-2 w-[100px]'>
+		<select
+			defaultValue={defaultValue}
+			onChange={(e) => onChange(e.target.value)}
+			className='block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 p-2 w-[100px]'
+		>
+			<option value=''>Select</option>
 			{stateAbbreviations.map((x) => {
 				return (
 					<option key={x} value={x}>

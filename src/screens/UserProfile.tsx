@@ -39,6 +39,15 @@ export const UserProfileScreen = () => {
 		return 'Name not set';
 	}, [userProfile.first, userProfile.last]);
 
+	const age = useMemo(() => {
+		if (!userProfile.dob) {
+			return 'Not set';
+		}
+		const dob = DateTime.fromFormat(userProfile.dob, 'MM/dd/yyyy');
+		const ageValue = DateTime.now().diff(dob, ['years']).years;
+		return Math.floor(ageValue).toString();
+	}, [userProfile.dob]);
+
 	return (
 		<ContentContainer>
 			<div className='mb-8'>
@@ -54,7 +63,7 @@ export const UserProfileScreen = () => {
 			</div>
 
 			<div className='flex flex-col gap-4'>
-				<LabelValue label='Age' value={userProfile.dob} />
+				<LabelValue label='Age' value={age} />
 				<LabelValue label='Location' value={location} />
 				<LabelValue
 					label='Favorite Disney Character'

@@ -7,7 +7,7 @@ import { ErrorMessage } from '../components/ErrorMessage';
 import { StateSelect } from '../components/StateSelect';
 import { useCallback } from 'react';
 import { useCookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../routes';
 import { DateTime } from 'luxon';
 
@@ -40,17 +40,18 @@ export const EditUserProfile = () => {
 		},
 	});
 
-	console.log('errors', { errors, storedUserProfile });
+	const navigate = useNavigate();
 
 	const save = useCallback(
 		(formData: UserProfileType) => {
 			formData.lastUpdated = DateTime.now().toISO();
-			console.log('form data', formData);
+
 			setCookie('user-profile', JSON.stringify(formData), {
 				path: '/',
 			});
+			navigate(routes.user.profile);
 		},
-		[setCookie]
+		[navigate, setCookie]
 	);
 
 	return (
@@ -129,7 +130,10 @@ export const EditUserProfile = () => {
 								State
 							</label>
 							<div className='mt-2'>
-								<StateSelect />
+								<StateSelect
+									defaultValue={storedUserProfile?.state}
+									onChange={(val) => setValue('state', val)}
+								/>
 								{errors.state && (
 									<ErrorMessage>{errors.state.message}</ErrorMessage>
 								)}

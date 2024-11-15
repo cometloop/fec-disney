@@ -42,5 +42,5 @@ export type UserProfile = {
 	favCharacter?: string;
 	favMovie?: string;
 	favDisneyLand?: string;
-	lastUpdated?: string
+	lastUpdated?: string;
 };

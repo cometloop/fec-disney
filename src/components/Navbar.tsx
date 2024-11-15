@@ -3,7 +3,35 @@ import { Logo } from './Logo';
 import { Link } from 'react-router-dom';
 import { routes } from '../routes';
 
+import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '../api';
+import { useSearch } from '../globalState/searchStore';
+import { useDebounce } from '../hooks/useDebounce';
+
 export const Navbar = () => {
+	const [val, setVal] = useState('');
+
+	const { state, actions } = useSearch();
+
+	const updateQuery = (query: string) => {
+		actions.updateQuery(query);
+	};
+
+	const debouncedUpdateQuery = useDebounce(updateQuery, 500);
+
+	const { data } = useQuery({
+		queryKey: ['search', state.query],
+		enabled: Boolean(state.query),
+		queryFn: () => api.search(state.query),
+	});
+
+	useEffect(() => {
+		if (data) {
+			actions.updateResults(data);
+		}
+	}, [actions, data]);
+
 	return (
 		<div className='flex items-center gap-10'>
 			<Logo />
@@ -15,6 +43,12 @@ export const Navbar = () => {
 						type='search'
 						placeholder='Find a character...'
 						className='block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 bg-[#F1F2F3]'
+						onChange={(e) => {
+							const q = e.target.value;
+							setVal(q);
+							debouncedUpdateQuery(q);
+						}}
+						value={val}
 					/>
 				</div>
 			</div>
