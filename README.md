@@ -1,5 +1,8 @@
 ## Run app locally
 
+- Node - 20.15.0
+- Yarn - 1.22.22
+
 Install all deps with
 
 ### `yarn install`

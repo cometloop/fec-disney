@@ -28,7 +28,7 @@ export const UserProfileScreen = () => {
 
 	const fullName = useMemo(() => {
 		if (userProfile.first && userProfile.last) {
-			return `${userProfile.first}, ${userProfile.last}`;
+			return `${userProfile.first} ${userProfile.last}`;
 		}
 		if (userProfile.first && !userProfile.last) {
 			return userProfile.first;
